@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 class Blink extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
     // Toggle the state every second
     setInterval(() => (
       this.setState(previousState => (
@@ -17,26 +17,25 @@ class Blink extends Component {
   render() {
     if (!this.state.isShowingText) {
       return (
-        <Text style={styles.textgreatings}>{this.props.text1}</Text>
+        <Text style={styles.textShow}>{this.props.text1}</Text>
       );
     }
-
     return (
-      <Text style={styles.textgreatings}>{this.props.text}</Text>
+      <Text style={styles.textShow}>{this.props.text}</Text>
     );
   }
 }
 class Greeting extends Component {
   render() {
     return (
-        <Text style={styles.textgreatings}>Xin chào {this.props.name}!</Text>
+      <Text style={styles.textgreatings}>Xin chào {this.props.name}!</Text>
     );
   }
 }
 class Bananas extends Component {
   render() {
     let pic = {
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+      uri: 'https://znews-photo.zadn.vn/w660/Uploaded/ofh_btgazspf/2019_06_14/DSC_5505_1.jpg'
     };
     return (
       <Image source={pic} style={{ width: 193, height: 110 }} />
@@ -47,9 +46,9 @@ class Bananas extends Component {
 export default function App() {
   return (
     <View style={styles.container}>
-      <Bananas pic='123' />
+      <Bananas pic='Xin chào' />
       <Text style={styles.text}>Xin chào React Native</Text>
-      <Blink text='Đây là ba Hùng' text1='Ba chào các con!'/>
+      <Blink text='Đây là ba Hùng' text1='Ba chào các con!' />
       <Greeting name='Mộc Mộc' />
       <Greeting name='Viên Viên' />
     </View>
@@ -59,16 +58,21 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#07c',
+    backgroundColor: 'rgba(5, 165, 209, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
-    color: '#fff',
+    color: '#3498db',
     fontSize: 17,
   },
   textgreatings: {
     color: '#3af',
     fontSize: 25,
+  },
+  textShow: {
+    color: 'red',
+    fontWeight: 'bold',
+    fontSize: 30,
   },
 });
