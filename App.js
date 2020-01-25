@@ -45,12 +45,26 @@ class Bananas extends Component {
 
 export default function App() {
   return (
+
     <View style={styles.container}>
+      <View>
+        <View style={{ width: 50, height: 50, backgroundColor: 'white' }} />
+        <View style={{ width: 300, height: 100, backgroundColor: 'skyblue', alignItems: 'center' }} >
+          <Text>Vạn vật không thay đổi chỉ có lòng người là đổi thay</Text>
+        </View>
+      </View>
       <Bananas pic='Xin chào' />
       <Text style={styles.text}>Xin chào React Native</Text>
       <Blink text='Đây là ba Hùng' text1='Ba chào các con!' />
       <Greeting name='Mộc Mộc' />
       <Greeting name='Viên Viên' />
+      <View style={{ flex: 2, backgroundColor: 'red' }} >
+        <Text>demo 2</Text>
+      </View>
+      <View style={{ flex: 3, backgroundColor: 'skyblue' }} ><Text>demo 3</Text>
+      </View>
+      <View style={{ flex: 4, backgroundColor: 'steelblue' }} ><Text>demo 4</Text>
+      </View>
     </View>
   );
 }
