@@ -24,7 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "tygon.com.vn.Appdemo"
+    },
+    "android":{
+      "package": "tygon.com.vn.Appdemo"
     }
   }
 }

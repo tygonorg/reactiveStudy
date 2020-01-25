@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 class Blink extends Component {
 
   componentDidMount() {
     // Toggle the state every second
     setInterval(() => (
       this.setState(previousState => (
-        { isShowingText: !previousState.isShowingText }
+        { isShowingText: !previousState.isShowingText, numberOfShow: previousState.numberOfShow + 1 }
       ))
     ), 1000);
   }
-
-  //state object
-  state = { isShowingText: true };
+  state = { isShowingText: true, numberOfShow: 1 };
 
   render() {
     if (!this.state.isShowingText) {
       return (
-        <Text style={styles.textShow}>{this.props.text1}</Text>
+        <Text style={styles.textShow}>{this.props.text1}{this.state.numberOfShow}+lần thứ {this.state.numberOfShow}</Text>
       );
     }
     return (
-      <Text style={styles.textShow}>{this.props.text}</Text>
+      <Text style={styles.textShow}>{this.props.text}+lần thứ {this.state.numberOfShow}</Text>
     );
   }
 }
@@ -42,15 +40,24 @@ class Bananas extends Component {
     );
   }
 }
+export class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
+  render() {
+    return (
+      <ScrollView>
+        <Bananas pic='Xin chào' />
+        <Text style={styles.text}>Xin chào React Native</Text>
+        <Blink text='Đây là ba Hùng' text1='Ba chào các con!' />
+        <Greeting name='Mộc Mộc' />
+        <Greeting name='Viên Viên' />
+      </ScrollView>
+    );
+  }
+}
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Bananas pic='Xin chào' />
-      <Text style={styles.text}>Xin chào React Native</Text>
-      <Blink text='Đây là ba Hùng' text1='Ba chào các con!' />
-      <Greeting name='Mộc Mộc' />
-      <Greeting name='Viên Viên' />
+      <IScrolledDownAndWhatHappenedNextShockedMe pagingEnabled="true"></IScrolledDownAndWhatHappenedNextShockedMe>
     </View>
   );
 }
@@ -61,6 +68,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(5, 165, 209, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 40,
   },
   text: {
     color: '#3498db',
