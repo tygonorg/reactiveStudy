@@ -51,6 +51,37 @@ export default function App() {
       <Blink text='Đây là ba Hùng' text1='Ba chào các con!' />
       <Greeting name='Mộc Mộc' />
       <Greeting name='Viên Viên' />
+      <View style={{flex: 1, flexDirection: 'row',justifyContent: 'flex-end',}}>
+        <View style={{width: 50, height: 50, backgroundColor: 'red'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'blue'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'white'}} />
+      </View>
+      <View style={{flex: 1, flexDirection: 'row',justifyContent: 'flex-start',}}>
+        <View style={{width: 50, height: 50, backgroundColor: 'red'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'blue'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'white'}} />
+      </View>
+      <View style={{flex: 1, flexDirection: 'row',justifyContent: 'center',}}>
+        <View style={{width: 50, height: 50, backgroundColor: 'red'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'blue'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'white'}} />
+      </View>
+      <View style={{flex: 1, flexDirection: 'row',justifyContent: 'flex-end',height: 10,backgroundColor: 'white',}}></View>
+      <View style={{flex: 1, flexDirection: 'column',justifyContent: 'flex-end',}}>
+        <View style={{width: 50, height: 50, backgroundColor: 'red'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'blue'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'white'}} />
+      </View>
+      <View style={{flex: 1, flexDirection: 'column',justifyContent: 'flex-start',}}>
+        <View style={{width: 50, height: 50, backgroundColor: 'red'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'blue'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'white'}} />
+      </View>
+      <View style={{flex: 1, flexDirection: 'column',justifyContent: 'center',}}>
+        <View style={{width: 50, height: 50, backgroundColor: 'red'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'blue'}} />
+        <View style={{width: 50, height: 50, backgroundColor: 'white'}} />
+      </View>
     </View>
   );
 }
@@ -59,8 +90,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'rgba(5, 165, 209, 0.25)',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   text: {
     color: '#3498db',
