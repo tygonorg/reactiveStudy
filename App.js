@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ActivityIndicator, FlatList } from 'react-native';
 class Blink extends Component {
 
   componentDidMount() {
@@ -42,6 +42,57 @@ class Bananas extends Component {
     );
   }
 }
+export class FetchExample extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true }
+  }
+
+  componentDidMount() {
+    return fetch('myapi')
+      .then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState({
+          isLoading: false,
+          dataSource: responseJson,
+        }, function () {
+
+        });
+
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+
+
+  render() {
+
+    if (this.state.isLoading) {
+      return (
+        <View style={{ flex: 1, padding: 20 }}>
+          <ActivityIndicator />
+        </View>
+      )
+    }
+    return (
+      <View style={{ flex: 1, paddingTop: 20 }}>
+        <FlatList
+          data={this.state.dataSource}
+          renderItem={({ item }) =>
+          <View style={styles.flatview}>
+            <Text>{item.des}</Text>
+            <Image style={{width: 363, height: 403, borderWidth: 1, borderColor: 'red'}} source={{uri: `data:image/jpeg;base64,${item.img}`}} />
+          </View>
+        }
+        />
+      </View>
+    );
+  }
+}
 
 export default function App() {
   return (
@@ -51,6 +102,7 @@ export default function App() {
       <Blink text='Đây là ba Hùng' text1='Ba chào các con!' />
       <Greeting name='Mộc Mộc' />
       <Greeting name='Viên Viên' />
+      <FetchExample></FetchExample>
     </View>
   );
 }
@@ -59,11 +111,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'rgba(5, 165, 209, 0.25)',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems:'stretch',
   },
   text: {
-    color: '#3498db',
+    color: 'white',
     fontSize: 17,
   },
   textgreatings: {
@@ -74,5 +126,11 @@ const styles = StyleSheet.create({
     color: 'red',
     fontWeight: 'bold',
     fontSize: 30,
+  },
+  flatview: {
+    justifyContent: 'center',
+    paddingTop: 30,
+    borderRadius: 2,
+    alignItems:'stretch',
   },
 });
