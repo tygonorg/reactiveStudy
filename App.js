@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList,SectionList } from 'react-native';
 class Blink extends Component {
-
   componentDidMount() {
     // Toggle the state every second
     setInterval(() => (
@@ -22,6 +21,46 @@ class Blink extends Component {
     }
     return (
       <Text style={styles.textShow}>{this.props.text}</Text>
+    );
+  }
+}
+export  class SectionListBasics extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <SectionList
+          sections={[
+            {title: 'D', data: ['Devin', 'Dan', 'Dominic']},
+            {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
+          ]}
+          renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+          renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+          keyExtractor={(item, index) => index}
+        />
+      </View>
+    );
+  }
+}
+export class FlatListBasics extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <FlatList
+          data={[
+            { key: 'Devin' },
+            { key: 'Dan' },
+            { key: 'Dominic' },
+            { key: 'Jackson' },
+            { key: 'James' },
+            { key: 'Joel' },
+            { key: 'John' },
+            { key: 'Jillian' },
+            { key: 'Jimmy' },
+            { key: 'Julie' },
+          ]}
+          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
+        />
+      </View>
     );
   }
 }
@@ -51,6 +90,8 @@ export default function App() {
       <Blink text='Đây là ba Hùng' text1='Ba chào các con!' />
       <Greeting name='Mộc Mộc' />
       <Greeting name='Viên Viên' />
+      <FlatListBasics></FlatListBasics>
+      <SectionListBasics></SectionListBasics>
     </View>
   );
 }
@@ -61,6 +102,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(5, 165, 209, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 22,
   },
   text: {
     color: '#3498db',
@@ -74,5 +116,10 @@ const styles = StyleSheet.create({
     color: 'red',
     fontWeight: 'bold',
     fontSize: 30,
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
   },
 });
