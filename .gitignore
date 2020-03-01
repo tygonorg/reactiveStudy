@@ -14,5 +14,10 @@ web-report/
 .DS_Store
 node_modules
 #android
-android/build
-android/app/build
+android/build/*
+android/app/build/*
+android/.gradle/5.6.4/fileHashes/
+
+*.bin
+
+android/.gradle/*
