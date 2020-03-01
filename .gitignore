@@ -13,3 +13,6 @@ web-report/
 # macOS
 .DS_Store
 node_modules
+#android
+android/build
+android/app/build
